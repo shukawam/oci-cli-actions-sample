@@ -24,5 +24,5 @@ jobs:
         with:
           silent: False
           command: 'artifacts container repository list --compartment-id ocid1.compartment.oc1..aaaaaaaanjtbllhqxcg67dq7em3vto2mvsbc6pbgk4pw6cx37afzk3tngmoa'
-          query:  'data.items[*]."display-name"'
+          query:  'data.items[*].\"display-name\"'
 
