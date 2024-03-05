@@ -1,0 +1,28 @@
+name: Build gpu-capacity-exporter
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: List the display name of container registry in my compartment
+    env:
+      OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+      OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+      OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+      OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+      OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+    steps:
+      - name: Retrieve
+        uses: oracle-actions/run-oci-cli-command@v1.1.1
+        id: find-images
+        with:
+          silent: False
+          command: 'artifacts container repository list --compartment-id ocid1.compartment.oc1..aaaaaaaanjtbllhqxcg67dq7em3vto2mvsbc6pbgk4pw6cx37afzk3tngmoa'
+          query:  'data.items[*]."display-name"'
+
