@@ -1,4 +1,4 @@
-name: Build gpu-capacity-exporter
+name: OCI CLI Actions
 
 on:
   workflow_dispatch:
