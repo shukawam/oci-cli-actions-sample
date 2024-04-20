@@ -23,6 +23,6 @@ jobs:
         id: find-images
         with:
           silent: False
-          command: 'artifacts container repository list --compartment-id ocid1.compartment.oc1..aaaaaaaanjtbllhqxcg67dq7em3vto2mvsbc6pbgk4pw6cx37afzk3tngmoa'
+          command: 'artifacts container repository list --compartment-id ${{ secrets.COMPARTMENT_ID }}'
           query:  'data.items[*].\"display-name\"'
 
